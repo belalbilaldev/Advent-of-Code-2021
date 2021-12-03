@@ -1,4 +1,3 @@
-console.time()
 const fs = require('fs')
 const input=fs.readFileSync('./input','utf-8').split(/\r?\n/).map((payload)=>payload)
 let table1=input;
@@ -28,9 +27,6 @@ const getElement=(table,flag)=>{
 
 console.log(parseInt(getElement(table1,1),2)
 *parseInt(getElement(table2,0),2))
-
-console.timeEnd()
-
 
 
 
