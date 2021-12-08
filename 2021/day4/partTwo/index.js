@@ -1,3 +1,20 @@
+const finalScore=(board,set,lastNumber)=>{
+    let sum = 0;
+    for(let i = 0 ; i < 5 ; i++){
+        for(let j = 0 ; j < 5 ; j++){
+            let trv = false;
+            for(let countSet = 0; countSet < set.length ; countSet++ ){
+                if(board[i][j] === set[countSet])trv = true   
+            }
+            
+            if(!trv){
+                sum += board[i][j]
+            }
+        }
+    }
+    return sum*lastNumber
+}
+
 module.exports=  function (  numbers, boards , set = [] ){
 
    for ( let numberCount = 0 ; numberCount < numbers.length ; numberCount++ ){
@@ -18,22 +35,7 @@ module.exports=  function (  numbers, boards , set = [] ){
                 }
                 if(row===5||col===5) {
                     if(boards.length===1){
-                        // sum start
-                        let sum = 0;
-                        for(let i = 0 ; i < 5 ; i++){
-                            for(let j = 0 ; j < 5 ; j++){
-                                let trv = false;
-                                for(let countSet = 0; countSet < set.length ; countSet++ ){
-                                    if(board[i][j] === set[countSet])trv = true   
-                                }
-                                
-                                if(!trv){
-                                    sum += board[i][j]
-                                }
-                            }
-                        }
-                        return sum*numbers[numberCount]
-                        // sun end
+                        return finalScore(board,set,numbers[numberCount])
                     }
                     boards.splice(boardCount, 1)
                 }
